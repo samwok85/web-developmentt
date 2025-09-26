@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Profesional</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/particles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Particles.js Background Container -->
+    <div id="particles-js"></div>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Portfolio</div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Skill</a></li>
+                    <li><a href="#portfolio">Project</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Selamat Datang di Portofolio Saya</h1>
+                <p>Web Developer, IT Developer, Cyber Security</p>
+                <div class="btn-group">
+                    <a href="#portfolio" class="btn btn-primary">Lihat Karya</a>
+                    <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/profile.jpeg" alt="Profile" id="profile-image">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tentang Saya</h2>
+                <p>Mengenal Lebih Dekat</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/about.jpeg" alt="About Me" id="about-image">
+                </div>
+                <div class="about-text">
+                    <h3>Pengembang Web & Pentester</h3>
+                    <p>Saya adalah seorang pengembang WEB, Pengembang IT, dan Cyber Pentesting.</p>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <h4 data-progress="75%">HTML & CSS</h4>
+                            <div class="skill-progress">
+                                <div class="progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4 data-progress="55%">PHP & Database</h4>
+                            <div class="skill-progress">
+                                <div class="progress" data-width="55%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4 data-progress="80%">Pentester</h4>
+                            <div class="skill-progress">
+                                <div class="progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4 data-progress="75%">Hardening</h4>
+                            <div class="skill-progress">
+                                <div class="progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skill Saya</h2>
+                <p>Apa yang Saya Miliki</p>
+            </div>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Pengembangan Web</h3>
+                    <p>Membuat website responsif dengan performa terbaik.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database Management</h3>
+                    <p>Membantu membangun Database untuk meningkatkan efisiensi .</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Security Pentesting</h3>
+                    <p>Mencari celah kerentanan di suatu web, aplikasi, maupun sistem perangkat.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security Hardening</h3>
+                    <p>Mengamankan celah di suatu web, aplikasi dan sistem perangkat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hasil Proyek</h2>
+                <p>Proyek Terbaru Saya</p>
+            </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="pentest">Pentest</button>
+                <button class="filter-btn" data-filter="hardening">Hardening</button>
+            </div>
+            <div class="portfolio-container">
+                <div class="portfolio-item" data-category="web">
+                    <img src="images/portfolio1.jpg" alt="Portfolio 1" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Website E-commerce</h3>
+                        <p>Web Development</p>
+                        <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="app">
+                    <img src="images/portfolio2.jpg" alt="Portfolio 2" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Website Company Profile</h3>
+                        <p>Web Development</p>
+                        <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="images/portfolio3.jpg" alt="Portfolio 3" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Website Game</h3>
+                        <p>Web Development</p>
+                        <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <img src="images/portfolio4.jpg" alt="Portfolio 4" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Pentesting Webserver</h3>
+                        <p>Pentesting</p>
+                        <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="app">
+                    <img src="images/portfolio5.jpg" alt="Portfolio 5" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Application Pentesting</h3>
+                        <p>Pentesting</p>
+                        <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="images/portfolio6.jpg" alt="Portfolio 6" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Web Security Hardening</h3>
+                        <p>Hardening</p>
+                        <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hubungi Saya</h2>
+                <p>Diskusikan Proyek Anda</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Lokasi</h3>
+                            <p>Malang, Jawa Timur, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>moekrie16@yahoo.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Telepon</h3>
+                            <p>+62 8819 850 688</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/moekrie_x86_64.tar.gz" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" placeholder="Subjek" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Pesan Anda" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Moekrie. All Rights Reserved.</p>
+                <div class="footer-nav">
+                    <a href="#home">Beranda</a>
+                    <a href="#about">Tentang</a>
+                    <a href="#services">Layanan</a>
+                    <a href="#portfolio">Portofolio</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/particles.js"></script>
+</body>
+</html>
