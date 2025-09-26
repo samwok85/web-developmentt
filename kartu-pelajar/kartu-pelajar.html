@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Tanda Pelajar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a237e;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #424242;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3f51b5;
+            box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+        }
+
+        .btn {
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            background-color: #303f9f;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #3f51b5;
+            color: #3f51b5;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(63, 81, 181, 0.1);
+        }
+
+        /* KTP Style Card */
+        .card {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: #333;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 540px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: #1a237e;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .card-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .card-header p {
+            font-size: 12px;
+            margin: 4px 0 0;
+            opacity: 0.9;
+        }
+        
+        .card-body {
+            display: flex;
+            background: white;
+            padding: 0;
+        }
+        
+        .photo-section {
+            width: 150px;
+            padding: 20px;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #e0e0e0;
+        }
+        
+        .photo-container {
+            width: 120px;
+            height: 160px;
+            background: #e0e0e0;
+            border: 1px solid #bdbdbd;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #previewPhoto {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        
+        .photo-placeholder {
+            text-align: center;
+            color: #757575;
+            font-size: 12px;
+            padding: 10px;
+        }
+        
+        .photo-placeholder i {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 5px;
+            color: #9e9e9e;
+        }
+        
+        .photo-upload-btn {
+            background: #3f51b5;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .photo-upload-btn:hover {
+            background: #303f9f;
+        }
+        
+        .info-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .info-label {
+            width: 140px;
+            color: #424242;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            flex: 1;
+            color: #212121;
+            border-bottom: 1px dotted #bdbdbd;
+            padding-bottom: 2px;
+            min-height: 18px;
+        }
+        
+        .card-footer {
+            background: #f5f5f5;
+            padding: 10px 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            font-size: 10px;
+            color: #757575;
+        }
+        
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .signature-box {
+            text-align: center;
+            flex: 1;
+            font-size: 10px;
+            color: #616161;
+        }
+        
+        .signature-line {
+            height: 1px;
+            background: #bdbdbd;
+            margin: 25px 20px 5px;
+            position: relative;
+        }
+        
+        .signature-line:after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: #bdbdbd;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .card-body {
+                flex-direction: column;
+            }
+            
+            .photo-section {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            .photo-container {
+                margin: 0 auto 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-group {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+        
+        /* Hide file input */
+        #photoInput {
+            display: none;
+        }
+
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .action-buttons .btn {
+            flex: 1;
+        }
+
+        /* KTP decorative elements */
+        .card::before {
+            content: 'KARTU TANDA PELAJAR';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 1;
+        }
+        
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-left-radius: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pembuatan Kartu Tanda Pelajar</h1>
+        
+        <div class="form-card">
+            <h2>Formulir Data Pelajar</h2>
+            <form id="studentForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nisn">NISN</label>
+                        <input type="text" id="nisn" placeholder="Masukkan NISN" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="religion">Agama</label>
+                        <select id="religion" required>
+                            <option value="">Pilih Agama</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Katolik">Katolik</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Buddha">Buddha</option>
+                            <option value="Konghucu">Konghucu</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="program">Program Keahlian</label>
+                        <select id="program" required>
+                            <option value="">Pilih Program</option>
+                            <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
+                            <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                            <option value="Multimedia">Multimedia</option>
+                            <option value="Akuntansi">Akuntansi</option>
+                            <option value="Pemasaran">Pemasaran</option>
+                            <option value="Tata Boga">Tata Boga</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Alamat Lengkap</label>
+                    <textarea id="address" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Foto (3x4)</label>
+                    <input type="file" id="photoInput" accept="image/*">
+                    <button type="button" class="btn btn-outline" onclick="document.getElementById('photoInput').click()">
+                        <i class="fas fa-upload"></i> Pilih Foto
+                    </button>
+                    <div style="font-size: 12px; color: #757575; margin-top: 5px;">Ukuran maksimal 2MB</div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button type="submit" class="btn">
+                        <i class="fas fa-id-card"></i> Buat Kartu
+                    </button>
+                    <button type="reset" class="btn btn-outline">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="card" id="idCard">
+            <div class="card-header">
+                <h2>KARTU TANDA PELAJAR</h2>
+                <p>SEKOLAH MENENGAH KEJURUAN NEGERI 12 MALANG</p>
+            </div>
+            
+            <div class="card-body">
+                <div class="photo-section">
+                    <div class="photo-container">
+                        <img id="previewPhoto" alt="Foto Siswa">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-user"></i>
+                            Foto 3x4
+                        </div>
+                    </div>
+                    <input type="file" id="photoInputCard" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event, 'previewPhoto')">
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-row">
+                        <div class="info-label">Nama</div>
+                        <div class="info-value" id="cardName">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">NISN</div>
+                        <div class="info-value" id="cardNisn">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Agama</div>
+                        <div class="info-value" id="cardReligion">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Program</div>
+                        <div class="info-value" id="cardProgram">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Alamat</div>
+                        <div class="info-value" id="cardAddress" style="min-height: 40px;">-</div>
+                    </div>
+                    
+                    <div class="signature-area">
+                        <div class="signature-box">
+                            <div class="signature-line"></div>
+                            Wali Kelas
+                        </div>
+                        <div class="signature-box">
+                            <div class="signature-line"></div>
+                            Kepala Sekolah
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <div>Kartu ini berlaku selama yang bersangkutan masih menjadi siswa aktif</div>
+                <div style="margin-top: 5px;">www.smkn12malang.sch.id | Telp. (021) 1234567</div>
+            </div>
+        </div>
+        
+        <!-- Tombol Simpan Kartu -->
+        <div style="text-align: center; margin: 20px 0 40px;">
+            <button id="saveCardBtn" class="btn" style="padding: 12px 35px; font-size: 16px; border-radius: 25px; background: #1a237e;">
+                <i class="fas fa-download"></i> Simpan Kartu Sebagai Gambar
+            </button>
+        </div>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- html2canvas for exporting to image -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <script>
+        // Form submission handler
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const nisn = document.getElementById('nisn').value;
+            const religion = document.getElementById('religion').value;
+            const program = document.getElementById('program').value;
+            const address = document.getElementById('address').value;
+            
+            // Update the card
+            document.getElementById('cardName').textContent = name || '-';
+            document.getElementById('cardNisn').textContent = nisn || '-';
+            document.getElementById('cardReligion').textContent = religion || '-';
+            document.getElementById('cardProgram').textContent = program || '-';
+            document.getElementById('cardAddress').textContent = address || '-';
+            
+            // Scroll to the card
+            document.getElementById('idCard').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Photo upload handler for form
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            handlePhotoUpload(e, 'previewPhoto');
+        });
+        
+        // Photo upload handler for card
+        document.getElementById('photoInputCard').addEventListener('change', function(e) {
+            handlePhotoUpload(e, 'previewPhoto');
+        });
+        
+        function handlePhotoUpload(event, previewId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Check file size (max 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Ukuran file terlalu besar. Maksimal 2MB.');
+                return;
+            }
+            
+            const reader = new FileReader();
+            const preview = document.getElementById(previewId);
+            const placeholder = preview.parentElement.querySelector('.photo-placeholder');
+            
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                if (placeholder) placeholder.style.display = 'none';
+            }
+            
+            reader.readAsDataURL(file);
+        }
+        
+        // Save card as image
+        document.getElementById('saveCardBtn').addEventListener('click', function() {
+            const card = document.getElementById('idCard');
+            
+            // Show loading state
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+            btn.disabled = true;
+            
+            // Use html2canvas to capture the card
+            html2canvas(card, {
+                scale: 2, // Higher scale for better quality
+                logging: false,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: null
+            }).then(canvas => {
+                // Create download link
+                const link = document.createElement('a');
+                link.download = 'kartu-pelajar-' + (document.getElementById('name').value || 'siswa') + '.jpg';
+                link.href = canvas.toDataURL('image/jpeg', 0.9); // 0.9 is the quality (0-1)
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Reset button state
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }).catch(err => {
+                console.error('Error generating image:', err);
+                alert('Gagal menyimpan kartu. Silakan coba lagi.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        });
+        
+        // Handle reset button
+        document.querySelector('button[type="reset"]').addEventListener('click', function() {
+            // Reset photo preview
+            const preview = document.getElementById('previewPhoto');
+            const placeholder = document.querySelector('.photo-placeholder');
+            
+            preview.src = '';
+            preview.style.display = 'none';
+            if (placeholder) placeholder.style.display = 'flex';
+            
+            // Reset card values
+            document.getElementById('cardName').textContent = '-';
+            document.getElementById('cardNisn').textContent = '-';
+            document.getElementById('cardReligion').textContent = '-';
+            document.getElementById('cardProgram').textContent = '-';
+            document.getElementById('cardAddress').textContent = '-';
+        });
+    </script>
+</body>
+</html>
